@@ -23,7 +23,6 @@ Since CHARMM does not natively provide an SPC/E topology for NAMD, a custom SPC/
 - [Step 7: Create the SPC/E Parameter File](#step-7-create-the-spce-parameter-file)
 - [Step 8: Generate the Water PSF](#step-8-generate-the-water-psf)
 - [Step 9: Generate the Complete System](#step-9-generate-the-complete-system)
-- [Step 10: Define Periodic Boundary Conditions](#step-10-define-periodic-boundary-conditions)
 - [Important Notes](#important-notes)
 - [Common Errors](#common-errors)
 - [References](#references)
@@ -289,35 +288,6 @@ system.pdb
 
 ---
 
-## Step 10: Define Periodic Boundary Conditions
-
-The PSF and PDB files do **not** store the periodic simulation box automatically.
-
-The box vectors were obtained from the last line of the original GROMACS `.gro` file.
-
-**Example:**
-
-```
-10.2456 9.8762 12.8000
-```
-
-GROMACS stores dimensions in **nm**. Convert to **Å**:
-
-```
-102.456
-98.762
-128.000
-```
-
-Use these values in NAMD:
-
-```tcl
-cellBasisVector1   102.456   0.0      0.0
-cellBasisVector2     0.0    98.762    0.0
-cellBasisVector3     0.0     0.0    128.000
-
-cellOrigin          Xc       Yc       Zc
-```
 
 ---
 
